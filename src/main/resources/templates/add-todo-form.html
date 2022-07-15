@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--    Заголовок-->
+    <title>Add todos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<!--Отступы с краёв-->
+<div class="container">
+    <h2>Add todo</h2>
+    <hr/>
+<!--    @{/saveTodo}  ссылка на  @PostMapping("/saveTodo")-->
+    <form th:action="@{/saveTodo}" th:object="${todo}" method="POST">
+        <input type="text" th:field="*{title}" placeholder="Enter title" class="form-control col-4 mb-4"/>
+        <input type="text" th:field="*{description}" placeholder="Enter description" class="form-control col-4 mb-4"/>
+        <button class="btn btn-primary" type="submit">Save</button>
+        <input type="hidden" th:field="*{id}"/>
+    </form>
+    <hr/>
+    <a th:href="@{/list}">Back to list</a>
+
+</div>
+</body>
+</html>
